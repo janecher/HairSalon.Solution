@@ -25,7 +25,7 @@ namespace HairSalon.Controllers
     [HttpGet]
     public ActionResult Create()
     {
-      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "FirstName LastName, Speciality");
+      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "FullName");
       return View();
     }
     
@@ -46,7 +46,7 @@ namespace HairSalon.Controllers
     public ActionResult Edit(int id)
     {
       Client thisClient = _db.Clients.FirstOrDefault(clients => clients.ClientId == id);
-      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "FirstName LastName, Speciality");
+      ViewBag.StylistId = new SelectList(_db.Stylists, "StylistId", "FullName");
       return View(thisClient);
     }
 
