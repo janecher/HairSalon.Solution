@@ -12,6 +12,7 @@ namespace HairSalon.Models
     public string FirstName {get; set;}
     public string LastName {get; set;}
     public string Speciality { get; set; }
+    public string FullName {get {return FirstName + " " + LastName + ", " + Speciality;}}
     public virtual ICollection<Client> Clients { get; set; }
   }
 }
