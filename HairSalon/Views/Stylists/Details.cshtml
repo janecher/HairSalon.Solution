@@ -5,7 +5,7 @@
 @using HairSalon.Models;
 @model HairSalon.Models.Stylist;
 
-<h3>Stylist Details</h3>
+<h3>Stylist details:</h3>
 <hr />
 <h4>@Html.DisplayNameFor(model => model.FullName): @Html.DisplayFor(model => model.FullName)</h4>
 
@@ -22,7 +22,7 @@
 </ul>
 
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
-<p>@Html.ActionLink("Back to stylists list", "Index")</p>
-<p>@Html.ActionLink("Add a client", "Create", "Clients")</p>
+<p>@Html.ActionLink("Back to list of stylists", "Index")</p>
+<p>@Html.ActionLink("Add client", "Create", "Clients")</p>
 <p>@Html.ActionLink("Edit stylist", "Edit", new { id = Model.StylistId })</p>
 <p>@Html.ActionLink("Delete stylist", "Delete", new { id = Model.StylistId})</p>
