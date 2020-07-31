@@ -8,6 +8,19 @@
 <hr />
 <h4>@Html.DisplayNameFor(model => model.FullName): @Html.DisplayFor(model => model.FullName)<h4>
 
+<h5>Appointments:</h5>
+@if (@Model.Appointments.Count == 0)
+{
+  <h3>No appointments have been added yet.</h3>
+} 
+
+<ul>
+@foreach (Appointment appointment in Model.Appointments)
+{
+  <li><p>@appointment.Name</p><p>@appointment.DateInfo</p><p>@appointment.Time</p></li>
+}
+</ul>
+
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
 <p>@Html.ActionLink("Back to list of stylists", "Index", "Stylists")</p>
 <p>@Html.ActionLink("Show all clients of stylist", "Index")</p>
