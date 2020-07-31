@@ -32,6 +32,13 @@ namespace HairSalon.Controllers
     [HttpPost]
     public ActionResult Create(Client client)
     {
+      foreach(Client clientExist in _db.Clients)
+      {
+        if(clientExist.FirstName == client.FirstName && clientExist.LastName == stylist.LastName)
+        {
+          return RedirectToAction("Index");
+        }
+      }
       _db.Clients.Add(client);
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -39,7 +46,7 @@ namespace HairSalon.Controllers
 
     public ActionResult Details(int id)
     {
-      Client thisClient = _db.Clients.FirstOrDefault(clients => clients.ClientId == id);
+      Client thisClient = _db.Clients.Include(client => client.Appointments).FirstOrDefault(clients => clients.ClientId == id);
       return View(thisClient);
     }
 
