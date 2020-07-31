@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@using HairSalon.Models;
+@model HairSalon.Models.Appointment;
+
+<h3>Add new appointment:</h3>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  @Html.LabelFor(model => model.Date)
+  @Html.TextBoxFor(model => model.Date, new { @type = "date" })
+  @Html.LabelFor(model => model.Time)
+  @Html.DropDownList("Time")
+  @Html.LabelFor(model => model.Client)
+  @Html.DropDownList("ClientId")
+  @Html.Display("")
+  <input type="submit" value="Add new appointment" />
+}
+
+<p>@Html.ActionLink("Back to client", "Details", "Clients")</p>
