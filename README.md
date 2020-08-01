@@ -22,38 +22,43 @@ This web application creates and manipulate with list of stylists, clients and a
 
 ### MySQL Setup
 
-* Install MySQL Workbench on your computer (https://dev.mysql.com/downloads/file/?id=484391)
+* Install MySQL on your computer 
 
-* Open MySQL Workbench and select the Local instance 3306 server.
+* You can directly import the file evgeniya_chernaya.sql file included in the project.
 
-* Open your MySQL Workbench. In the Navigator > Administration window, select Data Import/Restore.
+* Also you can create the database manually.
 
-* In Import Options select Import from Self-Contained File and navigate to 'evgeniya_chernaya' database.
+* Open your terminal and run "mysql -uroot -pepicodus" command.
 
-* The following is the query information for access this database on MySQL Workbench.
+* Copy/paste the code snippet below in your terminal.
 
 DROP DATABASE IF EXISTS `evgeniya_chernaya`;
 CREATE DATABASE `evgeniya_chernaya`;
 
+USE DATABASE `evgeniya_chernaya`;
+
 DROP TABLE IF EXISTS `stylists`;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `stylists` (
   `StylistId` int(11) NOT NULL AUTO_INCREMENT,
   `FirstName` varchar(100) DEFAULT NULL,
   `LastName` varchar(100) DEFAULT NULL,
   `Speciality` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`StylistId`)
-)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 DROP TABLE IF EXISTS `clients`;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `clients` (
   `ClientId` int(11) NOT NULL AUTO_INCREMENT,
   `FirstName` varchar(100) DEFAULT NULL,
   `LastName` varchar(100) DEFAULT NULL,
   `StylistId` int(11) DEFAULT '0',
   PRIMARY KEY (`ClientId`)
-) 
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci; 
 
 DROP TABLE IF EXISTS `appointments`;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `appointments` (
   `AppointmentId` int(11) NOT NULL AUTO_INCREMENT,
   `ClientId` int(11) DEFAULT '0',
@@ -61,7 +66,7 @@ CREATE TABLE `appointments` (
   `Name` varchar(255) DEFAULT NULL,
   `Time` int(11) DEFAULT NULL,
   PRIMARY KEY (`AppointmentId`)
-) 
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 ## Known Bugs
 
