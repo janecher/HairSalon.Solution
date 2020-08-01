@@ -11,13 +11,19 @@
 <h5>Appointments:</h5>
 @if (@Model.Appointments.Count == 0)
 {
-  <h3>No appointments have been added yet.</h3>
+  <p>No appointments have been added yet.</p>
 } 
 
 <ul>
 @foreach (Appointment appointment in Model.Appointments)
 {
-  <li><p>@appointment.Name</p><p>@appointment.DateInfo</p><p>@appointment.Time</p></li>
+  <li>
+    <p>@appointment.Name</p>
+    <p>@appointment.DateInfo</p>
+    <p>@appointment.Time</p>
+    <p>@Html.ActionLink("Edit", "Edit", "Appointments", new { id = appointment.AppointmentId })</p>
+    <p>@Html.ActionLink("Delete", "Delete", "Appointments", new { id = appointment.AppointmentId })</p>
+  </li>
 }
 </ul>
 
@@ -26,3 +32,4 @@
 <p>@Html.ActionLink("Show all clients of stylist", "Index")</p>
 <p>@Html.ActionLink("Edit client", "Edit", new { id = Model.ClientId })</p>
 <p>@Html.ActionLink("Delete client", "Delete", new { id = Model.ClientId })</p>
+<p>@Html.ActionLink("Add appointment", "Create", "Appointments", Model)</p>

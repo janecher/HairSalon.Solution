@@ -17,10 +17,9 @@ namespace HairSalon.Controllers
     }
 
     [HttpGet]
-    public ActionResult Create()
+    public ActionResult Create(Client client)
     {
-      ViewBag.ClientId = new SelectList(_db.Clients, "ClientId", "FullName");
-      ViewBag.Time = new List<string>{"9am, 10am, 11am, 1pm, 2pm"};
+      ViewBag.ClientId = client.ClientId;
       return View();
     }
     
@@ -34,10 +33,38 @@ namespace HairSalon.Controllers
           return RedirectToAction("Index");
         }
       }*/
-      ViewBag.Time.Remove(appointment.Time);
       _db.Appointments.Add(appointment);
       _db.SaveChanges();
       return RedirectToAction("Details", "Clients", new { id = appointment.ClientId });
+    }
+
+    public ActionResult Edit(int id)
+    {
+      Appointment thisAppointment = _db.Appointments.FirstOrDefault(appointments => appointments.AppointmentId == id);
+      return View(thisAppointment);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Appointment appointment)
+    {
+      _db.Entry(appointment).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Details", "Clients", new { id = appointment.ClientId });
+    }
+
+    public ActionResult Delete(int id)
+    {
+      Appointment thisAppointment = _db.Appointments.FirstOrDefault(appointments => appointments.AppointmentId == id);
+      return View(thisAppointment);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Appointment thisAppointment = _db.Appointments.FirstOrDefault(appointments => appointments.AppointmentId == id);
+      _db.Appointments.Remove(thisAppointment);
+      _db.SaveChanges();
+      return RedirectToAction("Details", "Clients", new { id = thisAppointment.ClientId });
     }
   }
 }

@@ -34,7 +34,7 @@ namespace HairSalon.Controllers
     {
       foreach(Client clientExist in _db.Clients)
       {
-        if(clientExist.FirstName == client.FirstName && clientExist.LastName == stylist.LastName)
+        if(clientExist.FirstName == client.FirstName && clientExist.LastName == client.LastName)
         {
           return RedirectToAction("Index");
         }
