@@ -26,13 +26,13 @@ namespace HairSalon.Controllers
     [HttpPost]
     public ActionResult Create(Appointment appointment)
     {
-      /*foreach(Appointment appointmentExist in _db.Appointments)
+      foreach(Appointment appointmentExist in _db.Appointments)
       {
         if(appointmentExist.Time == appointment.Time)
         {
-          return RedirectToAction("Index");
+          return RedirectToAction("Details", "Clients", new { id = appointment.ClientId });
         }
-      }*/
+      }
       _db.Appointments.Add(appointment);
       _db.SaveChanges();
       return RedirectToAction("Details", "Clients", new { id = appointment.ClientId });
