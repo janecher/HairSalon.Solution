@@ -2,7 +2,6 @@
   Layout = "_Layout";
 }
 
-@using HairSalon.Models;
 @model HairSalon.Models.Client;
 
 <div class="top">
@@ -13,7 +12,7 @@
 
 <h3>Add new client:</h3>
 <hr />
-@using (Html.BeginForm(new {@class="form-group"}))
+@using (Html.BeginForm())
 {
   <div class="form-group">
     @Html.LabelFor(model => model.FirstName)

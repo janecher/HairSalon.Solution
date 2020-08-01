@@ -12,7 +12,7 @@ body {
 .main {
   padding: 30px;
   background-color: white;
-  height: 500px;
+  border-bottom: 1px solid black;
 }
 
 .home {
@@ -25,7 +25,7 @@ body {
   color: grey;
 }
 
-.stylist-names {
+.names {
   font-size: 20px;
   font-weight: bold;
   color: grey;
@@ -62,4 +62,18 @@ h4 {
 .list-clients a{
   color: #1a1a1a;
   margin-bottom: 10px;
+}
+
+.edit-app, .delete-app{
+  border: 1px solid gray;
+  border-radius: 1px;
+  padding: 3px;
+  text-align: center;
+  margin-right: 5px;
+  background-color: #efeff5;
+}
+
+.edit-app a, .delete-app a {
+  color: black;
+  text-decoration: none;
 }

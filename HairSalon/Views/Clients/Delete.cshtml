@@ -2,17 +2,20 @@
   Layout = "_Layout";
 }
 
+<div class="top">
+  <span class="links">@Html.ActionLink("Home", "Index", "Home")</span>
+  <span class="links">@Html.ActionLink("Back to list of stylists", "Index", "Stylists")</span>
+  <span class="links">@Html.ActionLink("Show all clients of stylist", "Details", "Stylists", new { id = Model.StylistId })</span>
+  <span class="links">@Html.ActionLink("Back to client info", "Details", "Clients", new { id = Model.ClientId })</span>
+</div>
+
 @model HairSalon.Models.Client;
 
 <h3>Are you sure you want to delete this client?</h3>
 <hr />
-<h4>@Html.DisplayNameFor(model => model.FullName): @Html.DisplayFor(model => model.FullName)</h4>
+<h4 class="names">@Html.DisplayFor(model => model.FullName)</h4>
 
 @using (Html.BeginForm())
 {
-  <input type="submit" value="Delete" />
+  <input type="submit" value="Delete" class="btn btn-secondary" />
 }
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
-<p>@Html.ActionLink("Back to list of stylists", "Index", "Stylists")</p>
-<p>@Html.ActionLink("Show all clients of stylist", "Index")</p>

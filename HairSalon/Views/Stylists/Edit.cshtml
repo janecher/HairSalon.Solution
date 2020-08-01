@@ -11,9 +11,9 @@
 
 <h3>Edit this stylist:</h3>
 <hr />
-<h4 class="stylist-names">@Html.DisplayFor(model => model.FullName)</h4>
+<h4 class="names">@Html.DisplayFor(model => model.FullName)</h4>
 
-@using (Html.BeginForm(new {@class="form-group"}))
+@using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.StylistId)
   <div class="form-group">

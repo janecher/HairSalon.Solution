@@ -4,32 +4,35 @@
 @using HairSalon.Models;
 @model HairSalon.Models.Client;
 
-<h3>Client details:</h3>
+<div class="top">
+  <span class="links">@Html.ActionLink("Home", "Index", "Home")</span>
+  <span class="links">@Html.ActionLink("Back to list of stylists", "Index", "Stylists")</span>
+  <span class="links">@Html.ActionLink("Show all clients of stylist", "Details", "Stylists", new { id = Model.StylistId })</span>
+  <span class="links">@Html.ActionLink("Edit client", "Edit", new { id = Model.ClientId })</span>
+  <span class="links">@Html.ActionLink("Delete client", "Delete", new { id = Model.ClientId })</span>
+  <span class="links">@Html.ActionLink("Add appointment", "Create", "Appointments", Model)</span>
+</div>
+
+<h3>Client info:</h3>
 <hr />
-<h4>@Html.DisplayNameFor(model => model.FullName): @Html.DisplayFor(model => model.FullName)<h4>
+<h4 class="names">@Html.DisplayFor(model => model.FullName)<h4>
 
 <h5>Appointments:</h5>
+<hr />
 @if (@Model.Appointments.Count == 0)
 {
   <p>No appointments have been added yet.</p>
 } 
 
-<ul>
 @foreach (Appointment appointment in Model.Appointments)
 {
-  <li>
-    <p>@appointment.Name</p>
-    <p>@appointment.DateInfo</p>
-    <p>@appointment.Time</p>
-    <p>@Html.ActionLink("Edit", "Edit", "Appointments", new { id = appointment.AppointmentId })</p>
-    <p>@Html.ActionLink("Delete", "Delete", "Appointments", new { id = appointment.AppointmentId })</p>
-  </li>
+  <div class="appointment">
+    <p><strong>@appointment.Name</strong></p>
+    <p>Date: @appointment.DateInfo</p>
+    <p>Time: @appointment.TimeInfo</p>
+    <span class="edit-app">@Html.ActionLink("Edit", "Edit", "Appointments", new { id = appointment.AppointmentId })</span>
+    <span class="delete-app">@Html.ActionLink("Delete", "Delete", "Appointments", new { id = appointment.AppointmentId })</span>
+  </div>
+  <hr />
 }
-</ul>
 
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
-<p>@Html.ActionLink("Back to list of stylists", "Index", "Stylists")</p>
-<p>@Html.ActionLink("Show all clients of stylist", "Index")</p>
-<p>@Html.ActionLink("Edit client", "Edit", new { id = Model.ClientId })</p>
-<p>@Html.ActionLink("Delete client", "Delete", new { id = Model.ClientId })</p>
-<p>@Html.ActionLink("Add appointment", "Create", "Appointments", Model)</p>
