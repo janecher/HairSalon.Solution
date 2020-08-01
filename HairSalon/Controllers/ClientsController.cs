@@ -36,12 +36,12 @@ namespace HairSalon.Controllers
       {
         if(clientExist.FirstName == client.FirstName && clientExist.LastName == client.LastName)
         {
-          return RedirectToAction("Index");
+          return RedirectToAction("Details", "Stylists", new { id = clientExist.StylistId });
         }
       }
       _db.Clients.Add(client);
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Details", "Stylists", new { id = client.StylistId });
     }
 
     public ActionResult Details(int id)

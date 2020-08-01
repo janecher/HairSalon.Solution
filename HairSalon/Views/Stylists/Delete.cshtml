@@ -4,14 +4,16 @@
 
 @model HairSalon.Models.Stylist
 
+<div class="top">
+  <span class="links">@Html.ActionLink("Home", "Index", "Home")</span>
+  <span class="links">@Html.ActionLink("Back to list of stylists", "Index")</span>
+</div>
+
 <h3>Are you sure you want to delete this stylist?</h3>
 <hr />
-<h4>@Html.DisplayNameFor(model => model.FullName): @Html.DisplayFor(model => model.FullName)</h4>
+<h4 class="stylist-names">@Html.DisplayFor(model => model.FullName)</h4>
 
 @using (Html.BeginForm())
 {
-  <input type="submit" value="Delete" />
+  <input type="submit" value="Delete" class="btn btn-secondary" />
 } 
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
-<p>@Html.ActionLink("Back to list of stylists", "Index")</p>

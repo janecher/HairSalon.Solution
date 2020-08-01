@@ -4,17 +4,26 @@
 
 @model HairSalon.Models.Stylist
 
-<h3>Add new stylist</h3> 
-@using (Html.BeginForm())
-{
-  @Html.LabelFor(model => model.FirstName)
-  @Html.TextBoxFor(model => model.FirstName)
-  @Html.LabelFor(model => model.LastName)
-  @Html.TextBoxFor(model => model.LastName)
-  @Html.LabelFor(model => model.Speciality)
-  @Html.TextBoxFor(model => model.Speciality)
-  <input type="submit" value="Add new stylist" />
-}
+<div class="top">
+  <span class="links">@Html.ActionLink("Home", "Index", "Home")</span>
+  <span class="links">@Html.ActionLink("Show all stylists", "Index")</span>
+</div>
 
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
-<p>@Html.ActionLink("Show all stylists", "Index")</p>
+<h3>Add new stylist</h3> 
+<hr />
+@using (Html.BeginForm(new {@class="form-group"}))
+{
+  <div class="form-group">
+    @Html.LabelFor(model => model.FirstName)
+    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @required  = "required"})
+  </div>
+  <div class="form-group">
+    @Html.LabelFor(model => model.LastName)
+    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @required  = "required"})
+  </div>
+  <div class="form-group">
+    @Html.LabelFor(model => model.Speciality)
+    @Html.TextBoxFor(model => model.Speciality, new { @class = "form-control", @required  = "required"})
+  </div>
+  <input type="submit" value="Add" class="btn btn-secondary"/>
+}
